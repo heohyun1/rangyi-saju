@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
+from flask import Flask, request, jsonify, send_from_directory, make_response
 import os
 
 def load_env():
@@ -19,14 +18,22 @@ from saju_engine import analyze_saju
 from ai_interpreter import get_ai_interpretation, get_category_interpretation
 
 app = Flask(__name__, static_folder='static')
-CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "OPTIONS"], "allow_headers": ["Content-Type"]}})
+
+@app.after_request
+def add_cors(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
 
 @app.route('/')
 def index():
     return send_from_directory('static', 'index.html')
 
-@app.route('/api/saju', methods=['POST'])
+@app.route('/api/saju', methods=['POST', 'OPTIONS'])
 def get_saju():
+    if request.method == 'OPTIONS':
+        return make_response('', 204)
     try:
         data = request.get_json()
         result = analyze_saju(
@@ -37,8 +44,10 @@ def get_saju():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/saju/full', methods=['POST'])
+@app.route('/api/saju/full', methods=['POST', 'OPTIONS'])
 def get_saju_full():
+    if request.method == 'OPTIONS':
+        return make_response('', 204)
     try:
         data = request.get_json()
         saju_result = analyze_saju(
@@ -51,18 +60,16 @@ def get_saju_full():
             'text': ai_res.get('interpretation', '') or '',
             'message': ai_res.get('error', '') or ''
         }
-        if ai_res['success']:
-            print(f"[OK] AI {len(ai_res.get('interpretation',''))}자")
-        else:
-            print(f"[FAIL] AI: {ai_res.get('error','')}")
         return jsonify(saju_result)
     except Exception as e:
         import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/saju/detail', methods=['POST'])
+@app.route('/api/saju/detail', methods=['POST', 'OPTIONS'])
 def get_saju_detail():
+    if request.method == 'OPTIONS':
+        return make_response('', 204)
     try:
         data = request.get_json()
         saju_result = analyze_saju(
