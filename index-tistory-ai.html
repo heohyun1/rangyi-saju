@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>랑이명리 | 사주 전문 감정</title>
+    <meta name="description" content="랑이명리 - 정통 명리학 기반 사주팔자 무료 분석. AI 전문 해석까지.">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9446701042961111" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg:#faf6ef;--brown:#3d2b1f;--gold:#c4922a;--wood:#4a8c5c;--fire:#d4574a;--earth:#c4922a;--metal:#8a8a8a;--water:#2e6b8a; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:#2d2016;font-size:16px;line-height:1.6}
+        .container{max-width:600px;margin:0 auto;padding:15px}
+        .header{text-align:center;padding:15px 0}
+        .header-logo{width:100%;max-width:350px;border-radius:12px}
+        .ad-container{margin:15px 0;text-align:center;overflow:hidden}
+        .input-section{background:#fff;border:1px solid #e0d5c7;border-radius:20px;padding:25px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,0.05)}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+        .form-group label{display:block;font-size:13px;margin-bottom:5px;color:#6b5d50;font-weight:bold}
+        .form-group select,.form-group input{width:100%;padding:12px;border:1px solid #e0d5c7;border-radius:8px;background:#fdfaf5;font-size:16px;font-family:'Noto Sans KR',sans-serif}
+        .full-width{grid-column:span 2}
+        .btn-group{display:flex;flex-direction:column;gap:10px}
+        .submit-btn{width:100%;padding:16px;border:none;border-radius:12px;cursor:pointer;font-weight:700;font-size:18px;transition:0.3s;font-family:'Noto Sans KR',sans-serif}
+        .submit-btn:active{transform:scale(0.98)}
+        .basic-btn{background:#3d2b1f;color:#fff}
+        .ai-btn{background:var(--gold);color:#3d2b1f}
+        .reset-btn{background:#fff;color:#888;border:1px solid #e0d5c7;font-size:14px;padding:12px}
+        .submit-btn.loading{opacity:0.6;pointer-events:none}
+        .results-section{display:none}
+        .card{background:#fff;border:1px solid #e0d5c7;border-radius:20px;padding:20px;margin-bottom:20px}
+        .card h3{font-size:16px;color:var(--brown);margin-bottom:12px}
+        .pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:15px 0}
+        .pillar{border:1px solid #eee;border-radius:10px;text-align:center;overflow:hidden}
+        .pillar-header{background:#f9f4ee;padding:4px;font-size:11px;color:#888}
+        .pillar-sipsin{font-size:12px;color:var(--gold);padding:4px 0;font-weight:bold}
+        .pillar-gan,.pillar-ji{padding:8px 0;font-size:26px;font-weight:900;font-family:'Noto Serif KR'}
+        .pillar-ji{border-top:1px solid #f0ebe3}
+        .oh-wood{color:var(--wood)}.oh-fire{color:var(--fire)}.oh-earth{color:var(--earth)}.oh-metal{color:var(--metal)}.oh-water{color:var(--water)}
+        .ai-card{border:2px solid var(--gold);background:#fffdf7}
+        .ai-text{white-space:pre-wrap;font-size:15px;line-height:2;color:#333;word-break:keep-all}
+        .ai-text strong{color:var(--brown)}
+        .ai-error{background:#fff5f5;border:1px solid #f0c0c0;border-radius:12px;padding:16px;text-align:center;color:#c0392b;font-size:14px;line-height:1.8}
+        .badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+        .badge{padding:6px 12px;border-radius:20px;font-size:13px;background:#f5ede0;color:#6b4c35;border:1px solid #e0d5c7}
+        .daeun-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px}
+        .daeun-list::-webkit-scrollbar{height:4px}
+        .daeun-list::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px}
+        .daeun-item{flex:0 0 75px;text-align:center;border:1px solid #eee;padding:10px;border-radius:10px;background:#fafafa;font-size:12px}
+        .daeun-item.current{border-color:var(--gold);background:#fffdf7}
+        .ohaeng-bar-wrap{flex:1;text-align:center}
+        .ohaeng-bar{margin:0 auto;width:32px;border-radius:6px 6px 0 0;min-height:4px;transition:height 0.6s}
+        .spinner{width:30px;height:30px;border:3px solid #e0d5c7;border-top-color:var(--gold);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .footer{text-align:center;padding:40px 0;color:#999;font-size:12px}
+        .category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}
+        .cat-btn{padding:12px 8px;border:1px solid #e0d5c7;border-radius:10px;background:#fdfaf5;font-size:13px;cursor:pointer;text-align:center;font-family:'Noto Sans KR',sans-serif;transition:0.3s}
+        .cat-btn:hover,.cat-btn.active{border-color:var(--gold);background:#fffdf7}
+        .cat-btn .emoji{font-size:18px;display:block;margin-bottom:2px}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <!-- ★ 로고: 티스토리에 업로드 후 URL을 바꾸세요 -->
+        <img src="./logo.png" alt="랑이명리" class="header-logo" onerror="this.outerHTML='<h1 style=\'font-family:Noto Serif KR;font-size:32px;color:#3d2b1f\'>🐯 랑이명리</h1><p style=\'color:#888;font-size:13px\'>정통 명리학 사주 감정</p>'">
+    </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9446701042961111" data-ad-slot="5188037753" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div class="input-section" id="inputSection">
+        <div class="form-grid">
+            <div class="form-group"><label>년도</label><input type="number" id="year" value="1990" min="1900" max="2100"></div>
+            <div class="form-group"><label>월</label><select id="month"></select></div>
+            <div class="form-group"><label>일</label><select id="day"></select></div>
+            <div class="form-group"><label>시</label><select id="hour"></select></div>
+            <div class="form-group full-width"><label>성별</label><div style="display:flex;gap:30px"><label><input type="radio" name="gender" value="남" checked> 남</label><label><input type="radio" name="gender" value="여"> 여</label></div></div>
+            <div class="form-group full-width"><label>역법</label><div style="display:flex;gap:30px"><label><input type="radio" name="calendar" value="solar" checked> 양력</label><label><input type="radio" name="calendar" value="lunar"> 음력</label></div></div>
+        </div>
+        <div class="btn-group">
+            <button class="submit-btn basic-btn" id="basicBtn" onclick="analyzeSaju('basic')">빠른 사주 보기</button>
+            <button class="submit-btn ai-btn" id="aiBtn" onclick="analyzeSaju('full')">🐯 랑이 전문 해석 (AI)</button>
+        </div>
+    </div>
+    <div class="ad-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9446701042961111" data-ad-slot="4222757678" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    <div id="results" class="results-section"></div>
+    <div class="footer"><div style="font-size:16px;margin-bottom:6px">🐯 랑이명리</div><p>본 분석은 정통 명리학 이론 기반 참고용 감정입니다.</p><p>© 랑이명리</p></div>
+</div>
+<script>
+/*
+ * ★★★ 여기에 Render 서버 주소를 넣으세요 ★★★
+ * 예: 'https://rangyi-saju.onrender.com'
+ * 배포 전에는 '' (빈 문자열) → 서버 없이 기본 분석만 작동
+ */
+var API_SERVER = '';
+
+window.onload=function(){
+    var m=document.getElementById('month');for(var i=1;i<=12;i++)m.add(new Option(i+'월',i));m.value=5;
+    var d=document.getElementById('day');for(var i=1;i<=31;i++)d.add(new Option(i+'일',i));d.value=15;
+    var h=document.getElementById('hour');
+    var hd=[{n:'자시 (23~01)',v:0},{n:'축시 (01~03)',v:1},{n:'인시 (03~05)',v:3},{n:'묘시 (05~07)',v:5},{n:'진시 (07~09)',v:7},{n:'사시 (09~11)',v:9},{n:'오시 (11~13)',v:11},{n:'미시 (13~15)',v:13},{n:'신시 (15~17)',v:15},{n:'유시 (17~19)',v:17},{n:'술시 (19~21)',v:19},{n:'해시 (21~23)',v:21}];
+    hd.forEach(function(x){h.add(new Option(x.n,x.v))});h.value=13;
+    /* 서버 없으면 AI 버튼 숨김 */
+    if(!API_SERVER) document.getElementById('aiBtn').style.display='none';
+};
+var lastInput=null;
+function resetAll(){
+    document.getElementById('results').style.display='none';document.getElementById('results').innerHTML='';
+    document.getElementById('inputSection').scrollIntoView({behavior:'smooth'});
+    document.getElementById('year').value='1990';document.getElementById('month').value='5';
+    document.getElementById('day').value='15';document.getElementById('hour').value='13';
+    document.querySelector('input[name="gender"][value="남"]').checked=true;
+    document.querySelector('input[name="calendar"][value="solar"]').checked=true;lastInput=null;
+}
+async function analyzeSaju(mode){
+    var r=document.getElementById('results');r.style.display='block';
+    r.innerHTML='<div class="card" style="text-align:center"><div class="spinner"></div>🐯 랑이가 명반을 읽고 있습니다...<br><span style="font-size:12px;color:#999">'+(mode==='full'?'AI 전문 해석은 약 15~30초 걸립니다.':'잠시만 기다려주세요.')+'</span></div>';
+    var btn=mode==='full'?document.getElementById('aiBtn'):document.getElementById('basicBtn');
+    btn.classList.add('loading');
+    var input={year:parseInt(document.getElementById('year').value),month:parseInt(document.getElementById('month').value),day:parseInt(document.getElementById('day').value),hour:parseInt(document.getElementById('hour').value),gender:document.querySelector('input[name="gender"]:checked').value,is_lunar:document.querySelector('input[name="calendar"]:checked').value==='lunar'};
+    lastInput=input;
+    /* AI 모드: 서버 호출 시도 */
+    if(mode==='full' && API_SERVER){
+        try{
+            var resp=await fetch(API_SERVER+'/api/saju/full',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input)});
+            if(!resp.ok)throw new Error(resp.status);
+            var data=await resp.json();if(data.error)throw new Error(data.error);
+            renderResults(data,'full');btn.classList.remove('loading');return;
+        }catch(e){console.log('서버 실패, 로컬 전환:',e.message);}
+    }
+    /* 기본 모드 또는 서버 실패: 로컬 계산 */
+    setTimeout(function(){
+        try{
+            var data=calcLocal(input.year,input.month,input.day,input.hour,input.gender,input.is_lunar);
+            renderResults(data,'basic');
+            if(mode==='full'){var n=document.createElement('div');n.className='card';n.innerHTML='<div class="ai-error">AI 서버에 연결할 수 없어 기본 분석만 표시합니다.</div>';r.insertBefore(n,r.children[1]);}
+        }catch(e2){r.innerHTML='<div class="card"><p style="color:#c0392b;text-align:center">오류: '+e2.message+'</p></div>';}
+        btn.classList.remove('loading');
+    },300);
+}
+async function loadCat(cat){
+    if(!lastInput||!API_SERVER)return;var box=document.getElementById('cat-content');
+    box.innerHTML='<div style="text-align:center;padding:20px"><div class="spinner"></div><span style="color:#888;font-size:13px">랑이가 분석 중...</span></div>';
+    document.querySelectorAll('.cat-btn').forEach(function(b){b.classList.remove('active')});
+    document.querySelector('[data-cat="'+cat+'"]').classList.add('active');
+    try{
+        var resp=await fetch(API_SERVER+'/api/saju/detail',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},lastInput,{category:cat}))});
+        var data=await resp.json();
+        if(data.available&&data.interpretation)box.innerHTML='<div class="ai-text">'+fmtAI(data.interpretation)+'</div>';
+        else box.innerHTML='<div class="ai-error">해석 불가'+(data.message?': '+data.message:'')+'</div>';
+    }catch(e){box.innerHTML='<div class="ai-error">서버 연결 오류</div>';}
+}
+function fmtAI(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/^### (.*$)/gm,'<h4 style="margin:16px 0 8px;color:var(--brown)">$1</h4>').replace(/^## (.*$)/gm,'<h3 style="font-size:16px;margin:18px 0 8px;color:var(--brown)">$1</h3>').replace(/^# (.*$)/gm,'<h3 style="margin:20px 0 10px;color:var(--brown)">$1</h3>').replace(/\n/g,'<br>');}
+function renderResults(data,mode){
+    var r=document.getElementById('results'),p=data.pillars;
+    var getOh=function(o){return{목:'wood',화:'fire',토:'earth',금:'metal',수:'water'}[o]||'earth'};
+    var age=new Date().getFullYear()-data.input.year;
+    var curDI=0;data.daeun.list.forEach(function(d,i){if(age>=d.age)curDI=i});
+    var colors={목:'#4a8c5c',화:'#d4574a',토:'#c4922a',금:'#8a8a8a',수:'#2e6b8a'};
+    var ohNames=['목','화','토','금','수'],ohHanja='木火土金水';
+    var mx=Math.max.apply(null,data.ohaeng.values.concat([1]));
+    var aiHtml='';
+    if(mode==='full'&&data.ai_interpretation&&data.ai_interpretation.available&&data.ai_interpretation.text){
+        aiHtml='<div class="card ai-card"><h3 style="text-align:center">🐯 랑이 전문 사주 풀이</h3><div class="ai-text">'+fmtAI(data.ai_interpretation.text)+'</div></div>'
+        +'<div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-9446701042961111" data-ad-slot="8958839335"></ins></div>'
+        +'<div class="card ai-card"><h3 style="text-align:center">카테고리별 상세 분석</h3><div class="category-grid">'
+        +'<button class="cat-btn" data-cat="love" onclick="loadCat(\'love\')"><span class="emoji">💕</span>연애·궁합</button>'
+        +'<button class="cat-btn" data-cat="money" onclick="loadCat(\'money\')"><span class="emoji">💰</span>재물·투자</button>'
+        +'<button class="cat-btn" data-cat="career" onclick="loadCat(\'career\')"><span class="emoji">💼</span>직업·승진</button>'
+        +'<button class="cat-btn" data-cat="health" onclick="loadCat(\'health\')"><span class="emoji">🏥</span>건강</button>'
+        +'<button class="cat-btn" data-cat="yearly" onclick="loadCat(\'yearly\')"><span class="emoji">📅</span>올해 운세</button>'
+        +'</div><div id="cat-content"><p style="text-align:center;color:#888;font-size:13px">위 카테고리를 선택하세요</p></div></div>';
+    } else if(mode==='full'){
+        var errMsg=(data.ai_interpretation&&data.ai_interpretation.message)?data.ai_interpretation.message:'AI 해석 서버 오류';
+        aiHtml='<div class="card"><div class="ai-error">⚠️ AI 해석 실패: '+errMsg+'</div></div>';
+    }
+    r.innerHTML=
+    '<div style="text-align:center;margin-bottom:15px"><button class="submit-btn reset-btn" onclick="resetAll()" style="width:auto;padding:10px 30px;display:inline-block">🔄 다시 보기</button></div>'
+    +'<div class="card"><h2 style="text-align:center;font-size:20px;margin-bottom:8px">'+data.input.year+'년생 사주 명반</h2>'
+    +'<p style="text-align:center;font-size:13px;color:#888;margin-bottom:15px">'+(data.input.lunar_info||'')+' · '+data.input.hour_name+' · '+data.zodiac+'띠</p>'
+    +'<div class="pillars-grid">'
+    +['hour','day','month','year'].map(function(k,idx){var pl=p[k];var h=['시주','일주','월주','년주'];return '<div class="pillar"><div class="pillar-header">'+h[idx]+'</div><div class="pillar-sipsin">'+data.sipsin[k+'_gan']+'</div><div class="pillar-gan oh-'+getOh(pl.gan_ohaeng)+'">'+pl.gan_kr+'</div><div class="pillar-ji oh-'+getOh(pl.ji_ohaeng)+'">'+pl.ji_kr+'</div><div class="pillar-sipsin">'+data.sipsin[k+'_ji']+'</div></div>'}).join('')
+    +'</div>'
+    +'<p style="text-align:center;margin-top:12px"><strong>일간: '+p.day.gan_kr+'('+p.day.gan+') '+data.ilgan_ohaeng+'</strong><br><span style="font-size:14px;color:#6b5d50">'+data.yongsin.strength+' · 용신: '+data.yongsin.yongsin_ohaeng+'</span></p></div>'
+    +aiHtml
+    +'<div class="card"><h3>오행 분포</h3><div style="display:flex;align-items:flex-end;height:120px;gap:4px;padding:0 10px;margin-bottom:8px">'
+    +ohNames.map(function(oh,i){var v=data.ohaeng.values[i];var ht=Math.max(6,(v/mx)*100);return '<div class="ohaeng-bar-wrap"><div style="font-size:13px;font-weight:700;color:'+colors[oh]+';margin-bottom:4px">'+v+'</div><div class="ohaeng-bar" style="height:'+ht+'%;background:'+colors[oh]+'"></div><div style="font-size:11px;color:#888;margin-top:4px">'+oh+'('+ohHanja[i]+')</div></div>'}).join('')
+    +'</div><p style="text-align:center;font-size:13px;color:#6b5d50">강: <strong>'+data.ohaeng.dominant+'</strong> · 약: <strong style="color:var(--fire)">'+data.ohaeng.weak+'</strong></p></div>'
+    +'<div class="card"><h3>성격과 운세 특징</h3><div class="badge-list">'
+    +data.sinsal.map(function(s){return '<span class="badge">✨ '+s.split(' - ')[0]+'</span>'}).join('')
+    +data.relations.map(function(rel){return '<span class="badge">🌀 '+(rel.split(': ').pop())+'</span>'}).join('')
+    +((!data.sinsal.length&&!data.relations.length)?'<span class="badge" style="color:#999">원국 내 특이사항 없음</span>':'')
+    +'</div></div>'
+    +'<div class="card"><h3>대운 흐름 ('+data.daeun.start_age+'세 시작)</h3><div class="daeun-list">'
+    +data.daeun.list.map(function(d,i){return '<div class="daeun-item '+(i===curDI?'current':'')+'"><div>'+d.age+'세~</div><div style="font-weight:700;font-size:16px;font-family:Noto Serif KR">'+d.gan_kr+d.ji_kr+'</div><div style="color:#aaa">'+(d.year||'')+'</div></div>'}).join('')
+    +'</div></div>'
+    +'<div class="card" style="text-align:center"><h3>올해 세운</h3><div style="font-family:Noto Serif KR;font-size:22px;font-weight:700;color:var(--gold);margin:10px 0">'+data.current_year.label+'</div></div>'
+    +'<div class="card"><h3>십신 배치</h3><table style="width:100%;font-size:13px;border-collapse:collapse">'
+    +[['년간',p.year.gan_kr+'('+p.year.gan+')',data.sipsin.year_gan],['년지',p.year.ji_kr+'('+p.year.ji+')',data.sipsin.year_ji],['월간',p.month.gan_kr+'('+p.month.gan+')',data.sipsin.month_gan],['월지',p.month.ji_kr+'('+p.month.ji+')',data.sipsin.month_ji],['일간',p.day.gan_kr+'('+p.day.gan+')','일주 (나)'],['일지',p.day.ji_kr+'('+p.day.ji+')',data.sipsin.day_ji],['시간',p.hour.gan_kr+'('+p.hour.gan+')',data.sipsin.hour_gan],['시지',p.hour.ji_kr+'('+p.hour.ji+')',data.sipsin.hour_ji]].map(function(row){return '<tr><td style="padding:6px 10px;color:#888;border-bottom:1px solid #f0ebe3">'+row[0]+'</td><td style="padding:6px;border-bottom:1px solid #f0ebe3">'+row[1]+'</td><td style="padding:6px;border-bottom:1px solid #f0ebe3;color:var(--gold);font-weight:600">'+row[2]+'</td></tr>'}).join('')
+    +'</table></div>'
+    +'<div style="text-align:center;margin:20px 0"><button class="submit-btn reset-btn" onclick="resetAll()" style="width:auto;padding:12px 40px;display:inline-block;font-size:16px">🔄 다른 사주 보기</button></div>';
+    r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'start'});
+    try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}
+}
+function calcLocal(Y,M,D,H,G,L){
+    var CG=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'],CK=['갑','을','병','정','무','기','경','신','임','계'];
+    var JJ=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'],JK=['자','축','인','묘','진','사','오','미','신','유','술','해'];
+    var OK=['목','화','토','금','수'],ON=['목(木)','화(火)','토(土)','금(金)','수(水)'];
+    var CO=[0,0,1,1,2,2,3,3,4,4],JO=[4,2,0,0,2,1,1,2,3,3,2,4],CE=[0,1,0,1,0,1,0,1,0,1];
+    var ZD=['쥐','소','호랑이','토끼','용','뱀','말','양','원숭이','닭','개','돼지'];
+    var JB={0:9,1:5,2:0,3:1,4:4,5:2,6:3,7:5,8:6,9:7,10:4,11:8};
+    function gS(i,t){var iO=CO[i],iE=CE[i],tO=CO[t],tE=CE[t],s=iE===tE;if(iO===tO)return s?'비견':'겁재';var sh={0:1,1:2,2:3,3:4,4:0},ke={0:2,1:3,2:4,3:0,4:1};if(sh[iO]===tO)return s?'식신':'상관';if(ke[iO]===tO)return s?'편재':'정재';if(ke[tO]===iO)return s?'편관':'정관';if(sh[tO]===iO)return s?'편인':'정인';return'비견'}
+    function gSJ(i,j){return gS(i,JB[j])}
+    var aY=Y;if(M<2||(M===2&&D<4))aY--;
+    var yG=((aY-4)%10+10)%10,yJ=((aY-4)%12+12)%12;
+    var bd=[[1,6,12],[2,4,1],[3,6,2],[4,5,3],[5,6,4],[6,6,5],[7,7,6],[8,7,7],[9,8,8],[10,8,9],[11,7,10],[12,7,11]];
+    var sm=12;for(var i=bd.length-1;i>=0;i--){if(M>bd[i][0]||(M===bd[i][0]&&D>=bd[i][1])){sm=bd[i][2];break}}
+    var mJ=(sm+1)%12,mGg=yG%5,bmG=[2,4,6,8,0],mG=(bmG[mGg]+sm-1)%10;
+    var ref=new Date(1949,11,21),tgt=new Date(Y,M-1,D),delta=Math.round((tgt-ref)/864e5);
+    var gi=((delta%60)+60)%60,dG=gi%10,dJ=gi%12;
+    var hJ=0;if(H>=23||H<1)hJ=0;else if(H<3)hJ=1;else if(H<5)hJ=2;else if(H<7)hJ=3;else if(H<9)hJ=4;else if(H<11)hJ=5;else if(H<13)hJ=6;else if(H<15)hJ=7;else if(H<17)hJ=8;else if(H<19)hJ=9;else if(H<21)hJ=10;else hJ=11;
+    var dGg=dG%5,bhG=[0,2,4,6,8],hG=(bhG[dGg]+hJ)%10;
+    var oc=[0,0,0,0,0];[yG,mG,dG,hG].forEach(function(g){oc[CO[g]]++});[yJ,mJ,dJ,hJ].forEach(function(j){oc[JO[j]]++});
+    var sp={year_gan:gS(dG,yG),month_gan:gS(dG,mG),day_gan:'일주',hour_gan:gS(dG,hG),year_ji:gSJ(dG,yJ),month_ji:gSJ(dG,mJ),day_ji:gSJ(dG,dJ),hour_ji:gSJ(dG,hJ)};
+    var rels=[],aG=[yG,mG,dG,hG],aJ=[yJ,mJ,dJ,hJ];
+    var gHap={0:5,5:0,1:6,6:1,2:7,7:2,3:8,8:3,4:9,9:4},jCh={0:6,6:0,1:7,7:1,2:8,8:2,3:9,9:3,4:10,10:4,5:11,11:5},jHa={0:1,1:0,2:11,11:2,3:10,10:3,4:9,9:4,5:8,8:5,6:7,7:6};
+    var gN=['년간','월간','일간','시간'],jN=['년지','월지','일지','시지'];
+    for(var i=0;i<4;i++)for(var j=i+1;j<4;j++){if(gHap[aG[i]]===aG[j])rels.push('천간합: '+gN[i]+'-'+gN[j]);if(jCh[aJ[i]]===aJ[j])rels.push('지지충: '+jN[i]+'-'+jN[j]);if(jHa[aJ[i]]===aJ[j])rels.push('지지육합: '+jN[i]+'-'+jN[j])}
+    var ss=[];var dh={2:3,6:3,10:3,5:0,9:0,1:0,8:9,0:9,4:9,11:6,3:6,7:6},ym={2:8,6:8,10:8,5:11,9:11,1:11,8:2,0:2,4:2,11:5,3:5,7:5};
+    if(dh[dJ]!==undefined)aJ.forEach(function(jv,idx){if(idx!==2&&jv===dh[dJ])ss.push('도화살(桃花殺) - '+jN[idx])});
+    if(ym[dJ]!==undefined)aJ.forEach(function(jv,idx){if(idx!==2&&jv===ym[dJ])ss.push('역마살(驛馬殺) - '+jN[idx])});
+    var myO=CO[dG],sM={0:4,1:0,2:1,3:2,4:3},sC={0:1,1:2,2:3,3:4,4:0},sup=oc[myO]+oc[sM[myO]];
+    var ys;if(sup>=4)ys={strength:'신강(身強)',yongsin_ohaeng:ON[sC[myO]],advice:ON[sC[myO]]+' 용신'};else ys={strength:'신약(身弱)',yongsin_ohaeng:ON[sM[myO]],advice:ON[sM[myO]]+' 용신'};
+    var yE=CE[yG],fw=(G==='남')?(yE===0):(yE===1),sa=Math.max(1,Math.min(9,fw?Math.floor((30-D)/3):Math.floor(D/3)));
+    var dl=[];for(var i=0;i<10;i++){var dg=fw?(mG+i+1)%10:((mG-i-1)%10+10)%10,dj=fw?(mJ+i+1)%12:((mJ-i-1)%12+12)%12;dl.push({age:sa+i*10,year:Y+sa+i*10,gan_kr:CK[dg],ji_kr:JK[dj],gan:CG[dg],ji:JJ[dj],label:CK[dg]+JK[dj]+'('+CG[dg]+JJ[dj]+')'})}
+    var cy=new Date().getFullYear(),cyG=((cy-4)%10+10)%10,cyJ=((cy-4)%12+12)%12;
+    var hNm=['자시(23~01시)','축시(01~03시)','인시(03~05시)','묘시(05~07시)','진시(07~09시)','사시(09~11시)','오시(11~13시)','미시(13~15시)','신시(15~17시)','유시(17~19시)','술시(19~21시)','해시(21~23시)'];
+    function mkP(g,j){return{gan:CG[g],ji:JJ[j],gan_kr:CK[g],ji_kr:JK[j],gan_idx:g,ji_idx:j,gan_ohaeng:OK[CO[g]],ji_ohaeng:OK[JO[j]],label:CK[g]+JK[j]+'('+CG[g]+JJ[j]+')'}}
+    var mxI=oc.indexOf(Math.max.apply(null,oc)),mnI=oc.indexOf(Math.min.apply(null,oc));
+    return{input:{year:Y,month:M,day:D,hour:H,gender:G,is_lunar:L,lunar_info:(L?'음':'양')+'력 '+Y+'년 '+M+'월 '+D+'일',hour_name:hNm[hJ]},pillars:{year:mkP(yG,yJ),month:mkP(mG,mJ),day:mkP(dG,dJ),hour:mkP(hG,hJ)},ohaeng:{count:ON.reduce(function(o,n,i){o[n]=oc[i];return o},{}),dominant:ON[mxI],weak:ON[mnI],values:oc},sipsin:sp,relations:rels,sinsal:ss,yongsin:ys,daeun:{start_age:sa,list:dl},current_year:{year:cy,gan:CG[cyG],ji:JJ[cyJ],gan_kr:CK[cyG],ji_kr:JK[cyJ],label:cy+'년 '+CK[cyG]+JK[cyJ]+'('+CG[cyG]+JJ[cyJ]+')'},zodiac:ZD[yJ],ilgan_ohaeng:ON[CO[dG]]}
+}
+</script>
+</body>
+</html>
