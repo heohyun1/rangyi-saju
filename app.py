@@ -19,7 +19,7 @@ from saju_engine import analyze_saju
 from ai_interpreter import get_ai_interpretation, get_category_interpretation
 
 app = Flask(__name__, static_folder='static')
-CORS(app, origins=['*'])  # 티스토리에서 호출 허용
+CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "OPTIONS"], "allow_headers": ["Content-Type"]}})
 
 @app.route('/')
 def index():
